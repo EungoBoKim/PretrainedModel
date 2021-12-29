@@ -1,4 +1,4 @@
-
+<p align="center"><img src="./img/legalinsight_logo.png"></p>
 
 # Pretrained Korean Language Model (Law)
 한국어 법률분야 및 신문 corpus로 pre-train한 사전학습모델(BERT-Base, BERT-Small) 학습결과 입니다.
@@ -15,3 +15,8 @@
 | **L=12** |[12/128]|[12/256]|[12/512]|[**12/768 (BERT-Base)**]|
 
 참조 : https://github.com/google-research/bert/blob/master/README.md 
+
+
+
+# Pretrained Corpus
+
