@@ -24,5 +24,11 @@
 
 *dev set 기준 성능
 
+* KorQuAD1.0, ETRI law mrc는 huggingface의 BertForQuestionAnswering으로 학습하였습니다.
+* KLUE NER, KMOU NER는 huggingface의 BertForTokenClassification으로 학습하였습니다.
+* KorNLI는 huggingface의 BertForSequenceClassification으로 학습하였습니다.
+
+참조 : https://github.com/huggingface/transformers/tree/master/examples/pytorch
+
 # Pretrained Corpus
 
