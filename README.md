@@ -17,6 +17,12 @@
 참조 : https://github.com/google-research/bert/blob/master/README.md 
 
 
+|                               | KorQuAD1.0 (F1/EM) | ETRI law mrc (F1/EM) | KLUE NER(F1) | KMOU NER(F1) | KorNLI(acc) |
+|:-----------------------------:|:------------------:|:--------------------:|:------------:|:------------:|:-----------:|
+|       BERT (Small Size)       |    -               |    -                 |  -           |  -           |   -         |
+|       BERT (Base Size)        |    92.00/83.36     |    91.52/79.85       |  91.78       |  91.65       |  78.4       |
+
+*dev set 기준 성능
 
 # Pretrained Corpus
 
