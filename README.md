@@ -27,7 +27,7 @@
 
 # Pretrained Model Detail
 * Small : 법률, 법령, 조약, 판례, 국회회의록, 신문 (3GB, txt기준)
-* Base : 신문 (10GB, txt기준)
+* Base : 법률, 판례, 국회회의록, 신문 (10GB, txt기준)
 
 * Masking Strategy: Whole word Masking
 * Additional Task: NSP (Base Model의 경우, 제목과 기사내용을 sequence A와 sequence B로 하여 추가로 학습)
