@@ -36,8 +36,7 @@
 * Base : 신문 (10GB, txt기준)
 
 * Masking Strategy: Whole word Masking
-* Additional Task: NSP
-Base Model의 경우, 제목과 기사내용을 sequence A와 sequence B로 하여 추가로 학습
+* Additional Task: NSP (Base Model의 경우, 제목과 기사내용을 sequence A와 sequence B로 하여 추가로 학습)
 ```
 Sentence A: 한국 축구, 왜 중국에 농락당했나
 Sentence B: 아무리 유럽파가 빠졌다고 하지만 그래도 A 매치였는데 중국에 0-3으로 졌다 ... 이것이 월드컵을 120일밖에 남겨놓지 않은 한국 축구대표팀 수비의 현주소였다. 이래도 대회가 임박한 것이 아니라는 사실에 위안을 삼아야 할까?
