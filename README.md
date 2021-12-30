@@ -31,7 +31,7 @@
 
 참조 : https://github.com/huggingface/transformers/tree/master/examples/pytorch
 
-# Pretrained Corpus
+# Pretrained Model Detail
 * Small : 법률, 법령, 조약, 판례, 국회회의록, 신문 (3GB, txt기준)
 * Base : 신문 (10GB, txt기준)
 
