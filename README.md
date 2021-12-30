@@ -59,4 +59,4 @@ Label: IsNextSentence
 | Attention Dropout     | 0.1         | 0.1               |
 | Dropout               | 0.1         | 0.1               |
 | Batch Size            | 128         | 128               |
-| Train Steps           | 1M          | 600k              |
+| Train Steps           | 1M          | 300k              |
