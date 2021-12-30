@@ -7,11 +7,7 @@
 
 |   |H=128|H=256|H=512|H=768|
 |---|:---:|:---:|:---:|:---:|
-| **L=2**  |[2/128]|[2/256]|[2/512]|[2/768]|
 | **L=4**  |[4/128]|[4/256]|[**4/512 (BERT-Small)**]|[4/768]|
-| **L=6**  |[6/128]|[6/256]|[6/512]|[6/768]|
-| **L=8**  |[8/128]|[8/256]|[8/512]|[8/768]|
-| **L=10** |[10/128]|[10/256]|[10/512]|[10/768]|
 | **L=12** |[12/128]|[12/256]|[12/512]|[**12/768 (BERT-Base)**]|
 
 참조 : https://github.com/google-research/bert/blob/master/README.md 
@@ -60,3 +56,26 @@ Label: IsNextSentence
 | Dropout               | 0.1         | 0.1               |
 | Batch Size            | 128         | 128               |
 | Train Steps           | 1M          | 300k              |
+
+# Tokenization
+
+Before we describe the general recipe for handling word-level tasks, it's
+important to understand what exactly our tokenizer is doing. It has three main
+steps:
+
+1.  **Text normalization**: Convert all whitespace characters to spaces, and
+    (for the `Uncased` model) lowercase the input and strip out accent markers.
+    E.g., `John Johanson's, → john johanson's,`.
+
+2.  **Morph splitting**: Split *all* punctuation characters on both sides
+    (i.e., add whitespace around all punctuation characters). Punctuation
+    characters are defined as (a) Anything with a `P*` Unicode class, (b) any
+    non-letter/number/space ASCII character (e.g., characters like `$` which are
+    technically not punctuation). E.g., `john johanson's, → john johanson ' s ,`
+
+3.  **WordPiece tokenization**: Apply whitespace tokenization to the output of
+    the above procedure, and apply
+    [WordPiece](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/text_encoder.py)
+    tokenization to each token separately. (Our implementation is directly based
+    on the one from `tensor2tensor`, which is linked). E.g., `john johanson ' s
+    , → john johan ##son ' s ,`
