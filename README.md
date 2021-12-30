@@ -59,23 +59,22 @@ Label: IsNextSentence
 
 # Tokenization
 
-Before we describe the general recipe for handling word-level tasks, it's
-important to understand what exactly our tokenizer is doing. It has three main
-steps:
+3가지 단계로 tokenization을 진행했으며 아래와 같습니다. 
 
-1.  **Text normalization**: Convert all whitespace characters to spaces, and
-    (for the `Uncased` model) lowercase the input and strip out accent markers.
-    E.g., `John Johanson's, → john johanson's,`.
+1.  **Text normalization**: 특수문자 및 외국어, 한자 중 일부는 nomarlizing
+```
+input text : 식품의약품안전처는 혈중농도 최저 0.205ng/㎖(3일)부터 최고 1.216ng/㎖(8일) 범위 내에서
+normalizing 후 : 식품의약품안전처는 혈중농도 최저 0.205ng/ml(3일)부터 최고 1.216ng/ml(8일) 범위 내에서
+```
 
-2.  **Morph splitting**: Split *all* punctuation characters on both sides
-    (i.e., add whitespace around all punctuation characters). Punctuation
-    characters are defined as (a) Anything with a `P*` Unicode class, (b) any
-    non-letter/number/space ASCII character (e.g., characters like `$` which are
-    technically not punctuation). E.g., `john johanson's, → john johanson ' s ,`
+2.  **Morph splitting**: 한글, 영어, 숫자를 제외한 문자는 모두 split했으며, mecab의 morphs를 통해 형태소 단위로 split
+```
+input text : 혈중농도 최저 0.205ng/ml(3일)부터 최고 1.216ng/ml(8일) 범위 내에서
+splitting 후 : 식품의약품안전처 는 혈중 농도 최저 0 . 205 ng / ml ( 3 일 ) 부터 최고 1 . 216 ng / ml ( 8 일 ) 범위 내 에서
+```
 
-3.  **WordPiece tokenization**: Apply whitespace tokenization to the output of
-    the above procedure, and apply
-    [WordPiece](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/text_encoder.py)
-    tokenization to each token separately. (Our implementation is directly based
-    on the one from `tensor2tensor`, which is linked). E.g., `john johanson ' s
-    , → john johan ##son ' s ,`
+3.  **WordPiece tokenization**: split한 token별로 WordPiece tokenizing
+```
+input text : 식품의약품안전처 는 혈중 농도 최저 0 . 205 ng / ml ( 3 일 ) 부터 최고 1 . 216 ng / ml ( 8 일 ) 범위 내 에서
+tokenizing 후 : 식품 ##의약품 ##안전 ##처 는 혈중 농도 최저 0 . 20 ##5 ng / ml ( 3 일 ) 부터 최고 1 . 21 ##6 ng / ml ( 8 일 ) 범위 내 에서
+```
