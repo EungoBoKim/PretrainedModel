@@ -19,7 +19,7 @@
 
 |                               | KorQuAD1.0 (F1/EM) | ETRI law mrc (F1/EM) | KLUE NER(F1) | KMOU NER(F1) | KorNLI(acc) | 계약서추천 데이터셋(F1) | 개인정보NER 데이터셋(F1) |
 |:-----------------------------:|:------------------:|:--------------------:|:------------:|:------------:|:-----------:|:---------------------:|:-----------------------:|
-|       BERT (Small Size)       |    -               |    -                 |  -           |  -           |   -         |  76.6                 |  71.45                  |
+|       BERT (Small Size)       |    87.97/77.78     |    -                 |  -           |  -           |   -         |  76.6                 |  71.45                  |
 |       BERT (Base Size)        |    92.00/83.36     |    91.52/79.85       |  91.78       |  91.65       |  78.4       |  79.5                 |  72.79                  |
 
 *dev set 기준 성능
@@ -32,4 +32,25 @@
 참조 : https://github.com/huggingface/transformers/tree/master/examples/pytorch
 
 # Pretrained Corpus
+* Small : 법률, 법령, 조약, 판례, 국회회의록, 신문 (3GB, txt기준)
+* Base : 신문 (10GB, txt기준)
 
+* Masking Strategy: Whole word Masking
+* Additional Task: SOP
+* Optimizer: Adam Optimizer
+* Scheduler: LinearWarmup
+* Mixed-Precision : fp16
+* Hyper-parameters
+
+| Hyper-parameter       | Small Model | Base Model        |
+|:----------------------|:------------|:------------------|
+| Number of layers      | 12          | 12                |
+| Hidden Size           | 256         | 768               |
+| FFN inner hidden size | 1024        | 3076              |
+| Mask percent          | 15          | 15                |
+| Learning Rate         | 0.0001      | 0.0001            |
+| Warmup Proportion     | 0.05        | 0.1               |
+| Attention Dropout     | 0.1         | 0.1               |
+| Dropout               | 0.1         | 0.1               |
+| Batch Size            | 128         | 128               |
+| Train Steps           | 1M          | 600k              |
