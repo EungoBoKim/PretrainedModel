@@ -119,6 +119,7 @@ model.wv.similar_by_vector(model.wv.get_vector("법규"))
 
 ## Reference
 * https://github.com/huggingface/transformers/tree/master/examples/pytorch
+* https://tutorials.pytorch.kr/
 * https://github.com/enlipleai/kor_pretrain_LM
 * https://github.com/eagle705/pytorch-bert-crf-ner
 * https://wikidocs.net/book/2155
