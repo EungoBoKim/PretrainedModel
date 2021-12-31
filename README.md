@@ -95,7 +95,7 @@ model = FastText(size=32, window=3, min_count=1)
 model.build_vocab(sentences=MyIter())
 
 train corpus : 법률, 조약, 국회회의록, 판례, 뉴스 (약 500MB, txt기준) 
-FastText의 vocab과 BERT vocab을 일치하기 위해 vocab build 시 BERT vocab의 token으로 제작
+FastText의 vocab과 BERT vocab을 일치하기 위해 vocab build 시 BERT tokenizer로 token하여 제작
 ```
 vector 유사도 예시
 ``` 
