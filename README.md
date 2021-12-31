@@ -10,8 +10,6 @@
 | **L=4**  |[4/128]|[4/256]|[**4/512 (BERT-Small)**]|[4/768]|
 | **L=12** |[12/128]|[12/256]|[12/512]|[**12/768 (BERT-Base)**]|
 
-참조 : https://github.com/google-research/bert/blob/master/README.md 
-
 
 |                               | KorQuAD1.0 (F1/EM) | ETRI law mrc (F1/EM) | KLUE NER(F1) | KMOU NER(F1) | KorNLI(acc) | 계약서추천 데이터셋(F1) | 개인정보NER 데이터셋(F1) |
 |:-----------------------------:|:------------------:|:--------------------:|:------------:|:------------:|:-----------:|:---------------------:|:-----------------------:|
@@ -22,8 +20,6 @@
 
 * 계약서추천, 계약서 분류, 개인정보NER 데이터셋은 NIA R&D사업(계약서 자동작성 서비스, 계약서 RISK 분석, 개인정보침해평가)으로 자체 제작한 데이터셋 입니다.
 * sample dataset은 sample 폴더에 업로드 했습니다.
-
-참조 : https://github.com/huggingface/transformers/tree/master/examples/pytorch
 
 # Pretrained Model Detail
 * Small : 법률, 법령, 조약, 판례, 국회회의록, 신문 (3GB, txt기준)
@@ -76,3 +72,14 @@ splitting 후 : 식품의약품안전처 는 혈중 농도 최저 0 . 205 ng / m
 input text : 식품의약품안전처 는 혈중 농도 최저 0 . 205 ng / ml ( 3 일 ) 부터 최고 1 . 216 ng / ml ( 8 일 ) 범위 내 에서
 tokenizing 후 : 식품 ##의약품 ##안전 ##처 는 혈중 농도 최저 0 . 20 ##5 ng / ml ( 3 일 ) 부터 최고 1 . 21 ##6 ng / ml ( 8 일 ) 범위 내 에서
 ```
+
+# 참조
+* https://github.com/huggingface/transformers/tree/master/examples/pytorch
+* https://github.com/enlipleai/kor_pretrain_LM
+* https://github.com/eagle705/pytorch-bert-crf-ner
+* https://wikidocs.net/book/2155
+* https://github.com/KLUE-benchmark/KLUE
+* https://aihub.or.kr/aihub-data/natural-language/about
+* https://github.com/KHY13/KorQuAD-Enliple-BERT-small
+* https://aiopen.etri.re.kr/service_dataset.php
+* https://github.com/google-research/bert
