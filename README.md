@@ -99,7 +99,7 @@ FastText의 vocab과 BERT vocab을 일치하기 위해 vocab build 시 BERT toke
 ```
 vector 유사도 예시
 ``` 
-model_law.wv.similar_by_vector(model_law.wv.get_vector("법규"))
+model.wv.similar_by_vector(model.wv.get_vector("법규"))
 
 [('법규', 1.0),
  ('법령', 0.8030701279640198),
