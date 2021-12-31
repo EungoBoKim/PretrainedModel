@@ -73,6 +73,48 @@ input text : 식품의약품안전처 는 혈중 농도 최저 0 . 205 ng / ml (
 tokenizing 후 : 식품 ##의약품 ##안전 ##처 는 혈중 농도 최저 0 . 20 ##5 ng / ml ( 3 일 ) 부터 최고 1 . 21 ##6 ng / ml ( 8 일 ) 범위 내 에서
 ```
 
+# Fine-tuning
+성능향상이 있었던 Fine-tuning task 입니다.
+
+# QuestionAnswering task (ETRI law mrc dataset)
+
+ETRI law mrc dataset은 전세계 헌법이라는 주제로 한정되어 있어 법률 어휘에 대한 embedding을 추가하기 위해 FastText를 도입
+
+|                               | ETRI law mrc (F1/EM) |
+|:-----------------------------:|:--------------------:|
+|       BERT (Small Size)       |    87.62/73.55       |
+| BERT (Small Size) + tf + LSTM |    91.02/79.27       |
+| BERT (Small Size) + FastText + LSTM |    91.92/80.47       |
+
+*https://github.com/KHY13/KorQuAD-Enliple-BERT-small 의 모델에서 FastText로 수정해 학습
+
+# FastText train 
+```
+from gensim.models import FastText
+model = FastText(size=32, window=3, min_count=1)
+model.build_vocab(sentences=MyIter())
+
+train corpus : 법률, 조약, 국회회의록, 판례, 뉴스 (약 500MB, txt기준) 
+FastText의 vocab과 BERT vocab을 일치하기 위해 vocab build 시 BERT vocab의 token으로 제작
+```
+vector 유사도 예시
+``` 
+model_law.wv.similar_by_vector(model_law.wv.get_vector("법규"))
+
+[('법규', 1.0),
+ ('법령', 0.8030701279640198),
+ ('조례', 0.7243949770927429),
+ ('법률', 0.7135756015777588),
+ ('헌장', 0.6952621340751648),
+ ('내규', 0.688014030456543),
+ ('판례', 0.6755695939064026),
+ ('관습', 0.6672683358192444),
+ ('지침', 0.664908766746521),
+ ('예규', 0.6582371592521667)]
+
+```
+
+
 # 참조
 * https://github.com/huggingface/transformers/tree/master/examples/pytorch
 * https://github.com/enlipleai/kor_pretrain_LM
