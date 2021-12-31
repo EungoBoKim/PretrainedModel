@@ -114,8 +114,10 @@ model_law.wv.similar_by_vector(model_law.wv.get_vector("법규"))
 
 ```
 
+## Acknowledgement
+본 연구는 인공지능산업융합단의 ‘21년 국가AI데이터센터’ 사업으로 지원받아 수행  
 
-# 참조
+## Reference
 * https://github.com/huggingface/transformers/tree/master/examples/pytorch
 * https://github.com/enlipleai/kor_pretrain_LM
 * https://github.com/eagle705/pytorch-bert-crf-ner
@@ -125,3 +127,4 @@ model_law.wv.similar_by_vector(model_law.wv.get_vector("법규"))
 * https://github.com/KHY13/KorQuAD-Enliple-BERT-small
 * https://aiopen.etri.re.kr/service_dataset.php
 * https://github.com/google-research/bert
+* https://radimrehurek.com/gensim/models/fasttext.html
