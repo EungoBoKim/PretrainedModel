@@ -128,3 +128,4 @@ model_law.wv.similar_by_vector(model_law.wv.get_vector("법규"))
 * https://aiopen.etri.re.kr/service_dataset.php
 * https://github.com/google-research/bert
 * https://radimrehurek.com/gensim/models/fasttext.html
+* https://github.com/cl-tohoku/bert-japanese
